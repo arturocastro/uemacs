@@ -194,7 +194,6 @@ extern void unqname(char *name);
 extern int filewrite(int f, int n);
 extern int filesave(int f, int n);
 extern int writeout(char *fn);
-extern int ifile(char *fname);
 
 /* fileio.c */
 extern int ffropen(char *fn);

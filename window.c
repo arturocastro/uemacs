@@ -528,12 +528,6 @@ struct window *wpopup(void)
 	return wp;
 }
 
-int savewnd(int f, int n)
-{				/* save ptr to current window */
-	swindow = curwp;
-	return TRUE;
-}
-
 int restwnd(int f, int n)
 {				/* restore the saved screen */
 	struct window *wp;
