@@ -17,25 +17,6 @@
 #include "line.h"
 
 /*
- * Attach a buffer to a window. The
- * values of dot and mark come from the buffer
- * if the use count is 0. Otherwise, they come
- * from some other window.
- */
-int usebuffer(int f, int n)
-{
-	struct buffer *bp;
-	int s;
-	char bufn[NBUFN];
-
-	if ((s = mlreply("Use buffer: ", bufn, NBUFN)) != TRUE)
-		return s;
-	if ((bp = bfind(bufn, TRUE, 0)) == NULL)
-		return FALSE;
-	return swbuffer(bp);
-}
-
-/*
  * switch to the next buffer in the buffer list
  *
  * int f, n;		default flag, numeric argument

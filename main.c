@@ -116,7 +116,6 @@ int main(int argc, char **argv)
 	int viewflag;		/* are we starting in view mode? */
 	int gotoflag;		/* do we need to goto a line at start? */
 	int gline = 0;		/* if so, what line? */
-	int searchflag;		/* Do we need to search at start? */
 	int saveflag;		/* temp store for lastflag */
 	int errflag;		/* C error processing? */
 	char bname[NBUFN];	/* buffer name of file to read */
@@ -156,7 +155,6 @@ int main(int argc, char **argv)
 
 	viewflag = FALSE;	/* view mode defaults off in command line */
 	gotoflag = FALSE;	/* set to off to begin with */
-	searchflag = FALSE;	/* set to off to begin with */
 	firstfile = TRUE;	/* no file to edit yet */
 	startflag = FALSE;	/* startup file not executed yet */
 	errflag = FALSE;	/* not doing C error parsing */
@@ -205,11 +203,6 @@ int main(int argc, char **argv)
 			case 'r':	/* -r restrictive use */
 			case 'R':
 				restflag = TRUE;
-				break;
-			case 's':	/* -s for initial search string */
-			case 'S':
-				searchflag = TRUE;
-				strncpy(pat, &argv[carg][2], NPAT);
 				break;
 			case 'v':	/* -v for View File */
 			case 'V':
@@ -285,18 +278,12 @@ int main(int argc, char **argv)
 	} else
 		bp->b_mode |= gmode;
 
-	/* Deal with startup gotos and searches */
-	if (gotoflag && searchflag) {
-		update(FALSE);
-		mlwrite("(Can not search and goto at the same time!)");
-	} else if (gotoflag) {
+	/* Deal with startup gotos */
+	if (gotoflag) {
 		if (gotoline(TRUE, gline) == FALSE) {
 			update(FALSE);
 			mlwrite("(Bogus goto argument)");
 		}
-	} else if (searchflag) {
-		if (forwhunt(FALSE, 0) == FALSE)
-			update(FALSE);
 	}
 
 	/* Setup to process commands. */

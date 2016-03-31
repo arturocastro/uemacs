@@ -189,7 +189,6 @@ extern unsigned int stock(char *keyname);
 extern char *transbind(char *skey);
 
 /* buffer.c */
-extern int usebuffer(int f, int n);
 extern int nextbuffer(int f, int n);
 extern int swbuffer(struct buffer *bp);
 extern int killbuffer(int f, int n);
@@ -298,10 +297,6 @@ extern int shellprog(char *cmd);
 extern int execprog(char *cmd);
 
 /* search.c */
-extern int forwsearch(int f, int n);
-extern int forwhunt(int f, int n);
-extern int backsearch(int f, int n);
-extern int backhunt(int f, int n);
 extern int mcscanner(struct magic *mcpatrn, int direct, int beg_or_end);
 extern int scanner(const char *patrn, int direct, int beg_or_end);
 extern int eq(unsigned char bc, unsigned char pc);

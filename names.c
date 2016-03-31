@@ -122,8 +122,6 @@ struct name_bind names[] = {
 #endif
 	{"grow-window", enlargewind},
 	{"handle-tab", insert_tab},
-	{"hunt-forward", forwhunt},
-	{"hunt-backward", backhunt},
 	{"help", help},
 	{"i-shell", spawncli},
 #if	ISRCH
@@ -184,9 +182,6 @@ struct name_bind names[] = {
 	{"save-window", savewnd},
 	{"scroll-next-up", scrnextup},
 	{"scroll-next-down", scrnextdw},
-	{"search-forward", forwsearch},
-	{"search-reverse", backsearch},
-	{"select-buffer", usebuffer},
 	{"set", setvar},
 #if	CRYPT
 	{"set-encryption-key", set_encryption_key},

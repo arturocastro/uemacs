@@ -45,15 +45,11 @@ struct key_tab keytab[NBINDS] = {
 	,
 	{CONTROL | 'N', forwline}
 	,
-	{CONTROL | 'O', openline}
-	,
 	{CONTROL | 'P', backline}
 	,
 	{CONTROL | 'Q', quote}
 	,
-	{CONTROL | 'R', backsearch}
-	,
-	{CONTROL | 'S', forwsearch}
+	{CONTROL | 'S', fisearch}
 	,
 	{CONTROL | 'T', twiddle}
 	,
@@ -149,8 +145,6 @@ struct key_tab keytab[NBINDS] = {
 	{CTLX | '2', splitwind}
 	,
 	{CTLX | 'A', setvar}
-	,
-	{CTLX | 'B', usebuffer}
 	,
 	{CTLX | 'C', spawncli}
 	,
@@ -283,8 +277,6 @@ struct key_tab keytab[NBINDS] = {
 	{META | 'R', sreplace}
 	,
 #if	PKCODE
-	{META | 'S', forwsearch}
-	,			/* alternative P.K.     */
 #else
 #if	BSD
 	{META | 'S', bktoshell}
@@ -305,10 +297,6 @@ struct key_tab keytab[NBINDS] = {
 	,
 
 #if	MSDOS
-	{SPEC | CONTROL | '_', forwhunt}
-	,
-	{SPEC | CONTROL | 'S', backhunt}
-	,
 	{SPEC | 71, gotobol}
 	,
 	{SPEC | 72, backline}
