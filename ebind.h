@@ -92,8 +92,6 @@ struct key_tab keytab[NBINDS] = {
 	,
 	{CTLX | CONTROL | 'N', mvdnwind}
 	,
-	{CTLX | CONTROL | 'O', deblank}
-	,
 	{CTLX | CONTROL | 'P', mvupwind}
 	,
 	{CTLX | CONTROL | 'S', filesave}
@@ -150,20 +148,12 @@ struct key_tab keytab[NBINDS] = {
 	{CTLX | 'Q', quote}
 	,			/* alternative  */
 #endif
-#if	ISRCH
 	{CTLX | 'R', risearch}
 	,
-	{CTLX | 'S', fisearch}
-	,
-#endif
 	{CTLX | 'W', resize}
 	,
 	{CTLX | 'X', nextbuffer}
 	,
-#if	WORDPRO
-	{META | CONTROL | 'C', wordcount}
-	,
-#endif
 #if	PKCODE
 	{META | CONTROL | 'D', newsize}
 	,
@@ -217,10 +207,6 @@ struct key_tab keytab[NBINDS] = {
 	{META | 'G', gotoline}
 	,
 #if	PKCODE
-#if	WORDPRO
-	{META | 'J', justpara}
-	,
-#endif
 #endif
 	{META | 'K', bindtokey}
 	,

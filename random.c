@@ -601,36 +601,6 @@ int inspound(void)
 }
 
 /*
- * Delete blank lines around dot. What this command does depends if dot is
- * sitting on a blank line. If dot is sitting on a blank line, this command
- * deletes all the blank lines above and below the current line. If it is
- * sitting on a non blank line then it deletes all of the blank lines after
- * the line. Normally this command is bound to "C-X C-O". Any argument is
- * ignored.
- */
-int deblank(int f, int n)
-{
-	struct line *lp1;
-	struct line *lp2;
-	long nld;
-
-	if (curbp->b_mode & MDVIEW)	/* don't allow this command if      */
-		return rdonly();	/* we are in read only mode     */
-	lp1 = curwp->w_dotp;
-	while (llength(lp1) == 0 && (lp2 = lback(lp1)) != curbp->b_linep)
-		lp1 = lp2;
-	lp2 = lp1;
-	nld = 0;
-	while ((lp2 = lforw(lp2)) != curbp->b_linep && llength(lp2) == 0)
-		++nld;
-	if (nld == 0)
-		return TRUE;
-	curwp->w_dotp = lforw(lp1);
-	curwp->w_doto = 0;
-	return ldelete(nld, FALSE);
-}
-
-/*
  * Insert a newline, then enough tabs and spaces to duplicate the indentation
  * of the previous line. Assumes tabs are every eight characters. Quite simple.
  * Figure out the indentation of the current line. Insert a newline by calling

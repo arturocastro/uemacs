@@ -12,19 +12,10 @@
 /* External function declarations. */
 
 /* word.c */
-extern int wrapword(int f, int n);
 extern int backword(int f, int n);
-extern int forwword(int f, int n);
-extern int upperword(int f, int n);
-extern int lowerword(int f, int n);
-extern int capword(int f, int n);
 extern int delfword(int f, int n);
-extern int delbword(int f, int n);
 extern int inword(void);
-extern int fillpara(int f, int n);
-extern int justpara(int f, int n);
 extern int killpara(int f, int n);
-extern int wordcount(int f, int n);
 
 /* window.c */
 extern int reposition(int f, int n);
@@ -36,12 +27,9 @@ extern int mvupwind(int f, int n);
 extern int onlywind(int f, int n);
 extern int delwind(int f, int n);
 extern int splitwind(int f, int n);
-extern int enlargewind(int f, int n);
 extern int shrinkwind(int f, int n);
 extern int resize(int f, int n);
-extern int scrnextup(int f, int n);
 extern int scrnextdw(int f, int n);
-extern int savewnd(int f, int n);
 extern int restwnd(int f, int n);
 extern int newsize(int f, int n);
 extern int newwidth(int f, int n);
@@ -69,17 +57,14 @@ extern int swapmark(int f, int n);
 
 /* random.c */
 extern int tabsize;  /* Tab size (0: use real tabs). */
-extern int setfillcol(int f, int n);
 extern int showcpos(int f, int n);
 extern int getcline(void);
 extern int getccol(int bflg);
 extern int setccol(int pos);
-extern int twiddle(int f, int n);
 extern int quote(int f, int n);
 extern int insert_tab(int f, int n);
 extern int detab(int f, int n);
 extern int entab(int f, int n);
-extern int trim(int f, int n);
 extern int openline(int f, int n);
 extern int insert_newline(int f, int n);
 extern int cinsert(void);
@@ -105,7 +90,6 @@ extern int ovstring(int f, int n);
 /* main.c */
 extern void edinit(char *bname);
 extern int execute(int c, int f, int n);
-extern int quickexit(int f, int n);
 extern int quit(int f, int n);
 extern int ctlxlp(int f, int n);
 extern int ctlxrp(int f, int n);
@@ -142,8 +126,6 @@ extern void sizesignal(int signr);
 /* region.c */
 extern int killregion(int f, int n);
 extern int copyregion(int f, int n);
-extern int lowerregion(int f, int n);
-extern int upperregion(int f, int n);
 extern int getregion(struct region *rp);
 
 /* posix.c */
@@ -200,13 +182,10 @@ extern void ltoa(char *buf, int width, long num);
 extern int addline(char *text);
 extern int anycb(void);
 extern int bclear(struct buffer *bp);
-extern int unmark(int f, int n);
 /* Lookup a buffer by name. */
 extern struct buffer *bfind(char *bname, int cflag, int bflag);
 
 /* file.c */
-extern int fileread(int f, int n);
-extern int insfile(int f, int n);
 extern int filefind(int f, int n);
 extern int viewfile(int f, int n);
 extern int getfile(char *fname, int lockfl);
@@ -216,7 +195,6 @@ extern void unqname(char *name);
 extern int filewrite(int f, int n);
 extern int filesave(int f, int n);
 extern int writeout(char *fn);
-extern int filename(int f, int n);
 extern int ifile(char *fname);
 
 /* fileio.c */

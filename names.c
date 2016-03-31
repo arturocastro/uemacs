@@ -28,11 +28,7 @@ struct name_bind names[] = {
 	{"clear-and-redraw", redraw},
 	{"clear-message-line", clrmes},
 	{"copy-region", copyregion},
-#if	WORDPRO
-	{"count-words", wordcount},
-#endif
 	{"ctlx-prefix", cex},
-	{"delete-blank-lines", deblank},
 	{"delete-buffer", killbuffer},
 	{"delete-mode", delmode},
 	{"delete-global-mode", delgmode},
@@ -112,15 +108,9 @@ struct name_bind names[] = {
 	{"handle-tab", insert_tab},
 	{"help", help},
 	{"i-shell", spawncli},
-#if	ISRCH
-	{"incremental-search", fisearch},
-#endif
 	{"insert-space", insspace},
 	{"insert-string", istring},
 #if	WORDPRO
-#if	PKCODE
-	{"justify-paragraph", justpara},
-#endif
 	{"kill-paragraph", killpara},
 #endif
 	{"kill-region", killregion},

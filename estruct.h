@@ -148,7 +148,6 @@
 
 #endif /* Autoconf. */
 
-#define	ISRCH	1  /* Incremental searches like ITS EMACS          */
 #define	WORDPRO	1  /* Advanced word processing features            */
 #define	APROP	1  /* Add code for Apropos command                 */
 #define	CRYPT	1  /* file encryption enabled?                     */
@@ -604,7 +603,6 @@ struct while_block {
 /*
  * Incremental search defines.
  */
-#if	ISRCH
 
 #define	CMDBUFLEN	256	/* Length of our command buffer */
 
@@ -621,8 +619,6 @@ struct while_block {
 #define	IS_RUBOUT	0x7F	/* Delete previous character */
 
 /* IS_QUIT is no longer used, the variable metac is used instead */
-
-#endif
 
 #if defined(MAGIC)
 /*
