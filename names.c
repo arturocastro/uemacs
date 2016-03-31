@@ -110,9 +110,6 @@ struct name_bind names[] = {
 	{"i-shell", spawncli},
 	{"insert-space", insspace},
 	{"insert-string", istring},
-#if	WORDPRO
-	{"kill-paragraph", killpara},
-#endif
 	{"kill-region", killregion},
 	{"kill-to-end-of-line", killtext},
 	{"list-buffers", listbuffers},

@@ -180,10 +180,6 @@ struct key_tab keytab[NBINDS] = {
 	,
 	{META | CONTROL | 'T', newwidth}
 	,
-#if	WORDPRO
-	{META | CONTROL | 'W', killpara}
-	,
-#endif
 	{META | ' ', setmark}
 	,
 	{META | '?', help}

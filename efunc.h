@@ -15,7 +15,6 @@
 extern int backword(int f, int n);
 extern int delfword(int f, int n);
 extern int inword(void);
-extern int killpara(int f, int n);
 
 /* window.c */
 extern int reposition(int f, int n);

@@ -18,6 +18,30 @@
 #include "utf8.h"
 
 /*
+ * Return TRUE if the character at dot is a character that is considered to be
+ * part of a word. The word character list is hard coded. Should be setable.
+ */
+int inword(void)
+{
+	int c;
+
+	if (curwp->w_doto == llength(curwp->w_dotp))
+		return FALSE;
+	c = lgetc(curwp->w_dotp, curwp->w_doto);
+#if	PKCODE
+	if (isletter(c))
+#else
+	if (c >= 'a' && c <= 'z')
+		return TRUE;
+	if (c >= 'A' && c <= 'Z')
+#endif
+		return TRUE;
+	if (c >= '0' && c <= '9')
+		return TRUE;
+	return FALSE;
+}
+
+/*
  * This routine, given a pointer to a struct line, and the current cursor goal
  * column, return the best choice for the offset. The offset is returned.
  * Used by "C-N" and "C-P".
