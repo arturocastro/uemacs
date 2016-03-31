@@ -6,7 +6,6 @@ store-procedure prompt
 	insert-string "shell% "
 	set-mark
 	set $discmd TRUE
-	unmark-buffer
 !endm
 
 store-procedure getline

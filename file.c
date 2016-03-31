@@ -21,48 +21,6 @@
 #endif
 
 /*
- * Read a file into the current
- * buffer. This is really easy; all you do it
- * find the name of the file, and call the standard
- * "read a file into the current buffer" code.
- * Bound to "C-X C-R".
- */
-int fileread(int f, int n)
-{
-	int s;
-	char fname[NFILEN];
-
-	if (restflag)		/* don't allow this command if restricted */
-		return resterr();
-	if ((s = mlreply("Read file: ", fname, NFILEN)) != TRUE)
-		return s;
-	return readin(fname, TRUE);
-}
-
-/*
- * Insert a file into the current
- * buffer. This is really easy; all you do it
- * find the name of the file, and call the standard
- * "insert a file into the current buffer" code.
- * Bound to "C-X C-I".
- */
-int insfile(int f, int n)
-{
-	int s;
-	char fname[NFILEN];
-
-	if (restflag)		/* don't allow this command if restricted */
-		return resterr();
-	if (curbp->b_mode & MDVIEW)	/* don't allow this command if      */
-		return rdonly();	/* we are in read only mode     */
-	if ((s = mlreply("Insert file: ", fname, NFILEN)) != TRUE)
-		return s;
-	if ((s = ifile(fname)) != TRUE)
-		return s;
-	return reposition(TRUE, -1);
-}
-
-/*
  * Select a file for editing.
  * Look around to see if you can find the
  * fine in another buffer; if you can find it
@@ -497,39 +455,6 @@ int writeout(char *fn)
 		ffclose();	/* if a write error.    */
 	if (s != FIOSUC)	/* Some sort of error.  */
 		return FALSE;
-	return TRUE;
-}
-
-/*
- * The command allows the user
- * to modify the file name associated with
- * the current buffer. It is like the "f" command
- * in UNIX "ed". The operation is simple; just zap
- * the name in the buffer structure, and mark the windows
- * as needing an update. You can type a blank line at the
- * prompt if you wish.
- */
-int filename(int f, int n)
-{
-	struct window *wp;
-	int s;
-	char fname[NFILEN];
-
-	if (restflag)		/* don't allow this command if restricted */
-		return resterr();
-	if ((s = mlreply("Name: ", fname, NFILEN)) == ABORT)
-		return s;
-	if (s == FALSE)
-		strcpy(curbp->b_fname, "");
-	else
-		strcpy(curbp->b_fname, fname);
-	wp = wheadp;		/* Update mode lines.   */
-	while (wp != NULL) {
-		if (wp->w_bufp == curbp)
-			wp->w_flag |= WFMODE;
-		wp = wp->w_wndp;
-	}
-	curbp->b_mode &= ~MDVIEW;	/* no longer read only mode */
 	return TRUE;
 }
 

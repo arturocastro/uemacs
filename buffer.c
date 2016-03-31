@@ -513,14 +513,3 @@ int bclear(struct buffer *bp)
 	return TRUE;
 }
 
-/*
- * unmark the current buffers change flag
- *
- * int f, n;		unused command arguments
- */
-int unmark(int f, int n)
-{
-	curbp->b_flag &= ~BFCHG;
-	curwp->w_flag |= WFMODE;
-	return TRUE;
-}

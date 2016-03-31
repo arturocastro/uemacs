@@ -23,12 +23,6 @@ struct name_bind names[] = {
 	{"beginning-of-line", gotobol},
 	{"bind-to-key", bindtokey},
 	{"buffer-position", showcpos},
-	{"case-region-lower", lowerregion},
-	{"case-region-upper", upperregion},
-	{"case-word-capitalize", capword},
-	{"case-word-lower", lowerword},
-	{"case-word-upper", upperword},
-	{"change-file-name", filename},
 	{"change-screen-size", newsize},
 	{"change-screen-width", newwidth},
 	{"clear-and-redraw", redraw},
@@ -43,10 +37,8 @@ struct name_bind names[] = {
 	{"delete-mode", delmode},
 	{"delete-global-mode", delgmode},
 	{"delete-next-character", forwdel},
-	{"delete-next-word", delfword},
 	{"delete-other-windows", onlywind},
 	{"delete-previous-character", backdel},
-	{"delete-previous-word", delbword},
 	{"delete-window", delwind},
 	{"describe-bindings", desbind},
 	{"describe-key", deskey},
@@ -110,9 +102,6 @@ struct name_bind names[] = {
 #endif
 	{"execute-program", execprg},
 	{"exit-emacs", quit},
-#if	WORDPRO
-	{"fill-paragraph", fillpara},
-#endif
 	{"filter-buffer", filter_buffer},
 	{"find-file", filefind},
 	{"forward-character", forwchar},
@@ -120,14 +109,12 @@ struct name_bind names[] = {
 #if	CFENCE
 	{"goto-matching-fence", getfence},
 #endif
-	{"grow-window", enlargewind},
 	{"handle-tab", insert_tab},
 	{"help", help},
 	{"i-shell", spawncli},
 #if	ISRCH
 	{"incremental-search", fisearch},
 #endif
-	{"insert-file", insfile},
 	{"insert-space", insspace},
 	{"insert-string", istring},
 #if	WORDPRO
@@ -152,7 +139,6 @@ struct name_bind names[] = {
 	{"next-paragraph", gotoeop},
 #endif
 	{"next-window", nextwind},
-	{"next-word", forwword},
 	{"nop", nullproc},
 	{"open-line", openline},
 	{"overwrite-string", ovstring},
@@ -163,11 +149,8 @@ struct name_bind names[] = {
 	{"previous-paragraph", gotobop},
 #endif
 	{"previous-window", prevwind},
-	{"previous-word", backword},
 	{"query-replace-string", qreplace},
-	{"quick-exit", quickexit},
 	{"quote-character", quote},
-	{"read-file", fileread},
 	{"redraw-display", reposition},
 	{"resize-window", resize},
 	{"restore-window", restwnd},
@@ -179,14 +162,10 @@ struct name_bind names[] = {
 	{"run", execproc},
 #endif
 	{"save-file", filesave},
-	{"save-window", savewnd},
-	{"scroll-next-up", scrnextup},
-	{"scroll-next-down", scrnextdw},
 	{"set", setvar},
 #if	CRYPT
 	{"set-encryption-key", set_encryption_key},
 #endif
-	{"set-fill-column", setfillcol},
 	{"set-mark", setmark},
 	{"shell-command", spawn},
 	{"shrink-window", shrinkwind},
@@ -198,16 +177,10 @@ struct name_bind names[] = {
 #if	BSD | __hpux | SVR4
 	{"suspend-emacs", bktoshell},
 #endif
-	{"transpose-characters", twiddle},
-#if	AEDIT
-	{"trim-line", trim},
-#endif
 	{"unbind-key", unbindkey},
 	{"universal-argument", unarg},
-	{"unmark-buffer", unmark},
 	{"update-screen", upscreen},
 	{"view-file", viewfile},
-	{"wrap-word", wrapword},
 	{"write-file", filewrite},
 	{"write-message", writemsg},
 	{"yank", yank},

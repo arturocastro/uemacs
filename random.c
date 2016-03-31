@@ -16,16 +16,6 @@
 int tabsize; /* Tab size (0: use real tabs) */
 
 /*
- * Set fill column to n.
- */
-int setfillcol(int f, int n)
-{
-	fillcol = n;
-	mlwrite("(Fill column is %d)", n);
-	return TRUE;
-}
-
-/*
  * Display the current position of the cursor, in origin 1 X-Y coordinates,
  * the character that is under the cursor (in hex), and the fraction of the
  * text that is before the cursor. The displayed column is not the current
@@ -182,36 +172,6 @@ int setccol(int pos)
 
 	/* and tell weather we made it */
 	return col >= pos;
-}
-
-/*
- * Twiddle the two characters on either side of dot. If dot is at the end of
- * the line twiddle the two characters before it. Return with an error if dot
- * is at the beginning of line; it seems to be a bit pointless to make this
- * work. This fixes up a very common typo with a single stroke. Normally bound
- * to "C-T". This always works within a line, so "WFEDIT" is good enough.
- */
-int twiddle(int f, int n)
-{
-	struct line *dotp;
-	int doto;
-	int cl;
-	int cr;
-
-	if (curbp->b_mode & MDVIEW)	/* don't allow this command if      */
-		return rdonly();	/* we are in read only mode     */
-	dotp = curwp->w_dotp;
-	doto = curwp->w_doto;
-	if (doto == llength(dotp) && --doto < 0)
-		return FALSE;
-	cr = lgetc(dotp, doto);
-	if (--doto < 0)
-		return FALSE;
-	cl = lgetc(dotp, doto);
-	lputc(dotp, doto + 0, cr);
-	lputc(dotp, doto + 1, cl);
-	lchange(WFEDIT);
-	return TRUE;
 }
 
 /*
@@ -375,49 +335,6 @@ int entab(int f, int n)
 	curwp->w_doto = 0;	/* to the begining of the line */
 	thisflag &= ~CFCPCN;	/* flag that this resets the goal column */
 	lchange(WFEDIT);	/* yes, we have made at least an edit */
-	return TRUE;
-}
-
-/*
- * trim trailing whitespace from the point to eol
- *
- * int f, n;		default flag and numeric repeat count
- */
-int trim(int f, int n)
-{
-	struct line *lp;	/* current line pointer */
-	int offset;	/* original line offset position */
-	int length;	/* current length */
-	int inc;	/* increment to next line [sgn(n)] */
-
-	if (curbp->b_mode & MDVIEW)	/* don't allow this command if      */
-		return rdonly();	/* we are in read only mode     */
-
-	if (f == FALSE)
-		n = 1;
-
-	/* loop thru trimming n lines */
-	inc = ((n > 0) ? 1 : -1);
-	while (n) {
-		lp = curwp->w_dotp;	/* find current line text */
-		offset = curwp->w_doto;	/* save original offset */
-		length = lp->l_used;	/* find current length */
-
-		/* trim the current line */
-		while (length > offset) {
-			if (lgetc(lp, length - 1) != ' ' &&
-			    lgetc(lp, length - 1) != '\t')
-				break;
-			length--;
-		}
-		lp->l_used = length;
-
-		/* advance/or back to the next line */
-		forwline(TRUE, inc);
-		n -= inc;
-	}
-	lchange(WFEDIT);
-	thisflag &= ~CFCPCN;	/* flag that this resets the goal column */
 	return TRUE;
 }
 #endif

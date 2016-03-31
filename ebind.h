@@ -51,8 +51,6 @@ struct key_tab keytab[NBINDS] = {
 	,
 	{CONTROL | 'S', fisearch}
 	,
-	{CONTROL | 'T', twiddle}
-	,
 	{CONTROL | 'U', unarg}
 	,
 	{CONTROL | 'V', forwpage}
@@ -90,10 +88,6 @@ struct key_tab keytab[NBINDS] = {
 #endif
 	{CTLX | CONTROL | 'F', filefind}
 	,
-	{CTLX | CONTROL | 'I', insfile}
-	,
-	{CTLX | CONTROL | 'L', lowerregion}
-	,
 	{CTLX | CONTROL | 'M', delmode}
 	,
 	{CTLX | CONTROL | 'N', mvdnwind}
@@ -102,15 +96,7 @@ struct key_tab keytab[NBINDS] = {
 	,
 	{CTLX | CONTROL | 'P', mvupwind}
 	,
-	{CTLX | CONTROL | 'R', fileread}
-	,
 	{CTLX | CONTROL | 'S', filesave}
-	,
-#if	AEDIT
-	{CTLX | CONTROL | 'T', trim}
-	,
-#endif
-	{CTLX | CONTROL | 'U', upperregion}
 	,
 	{CTLX | CONTROL | 'V', viewfile}
 	,
@@ -136,8 +122,6 @@ struct key_tab keytab[NBINDS] = {
 	,
 	{CTLX | ')', ctlxrp}
 	,
-	{CTLX | '^', enlargewind}
-	,
 	{CTLX | '0', delwind}
 	,
 	{CTLX | '1', onlywind}
@@ -154,13 +138,9 @@ struct key_tab keytab[NBINDS] = {
 #endif
 	{CTLX | 'E', ctlxe}
 	,
-	{CTLX | 'F', setfillcol}
-	,
 	{CTLX | 'K', killbuffer}
 	,
 	{CTLX | 'M', setemode}
-	,
-	{CTLX | 'N', filename}
 	,
 	{CTLX | 'O', nextwind}
 	,
@@ -180,8 +160,6 @@ struct key_tab keytab[NBINDS] = {
 	,
 	{CTLX | 'X', nextbuffer}
 	,
-	{CTLX | 'Z', enlargewind}
-	,
 #if	WORDPRO
 	{META | CONTROL | 'C', wordcount}
 	,
@@ -198,8 +176,6 @@ struct key_tab keytab[NBINDS] = {
 	{META | CONTROL | 'F', getfence}
 	,
 #endif
-	{META | CONTROL | 'H', delbword}
-	,
 	{META | CONTROL | 'K', unbindkey}
 	,
 	{META | CONTROL | 'L', reposition}
@@ -214,14 +190,10 @@ struct key_tab keytab[NBINDS] = {
 	,
 	{META | CONTROL | 'T', newwidth}
 	,
-	{META | CONTROL | 'V', scrnextdw}
-	,
 #if	WORDPRO
 	{META | CONTROL | 'W', killpara}
 	,
 #endif
-	{META | CONTROL | 'Z', scrnextup}
-	,
 	{META | ' ', setmark}
 	,
 	{META | '?', help}
@@ -234,24 +206,14 @@ struct key_tab keytab[NBINDS] = {
 	,
 	{META | '<', gotobob}
 	,
-	{META | '~', unmark}
-	,
 #if	APROP
 	{META | 'A', apro}
 	,
 #endif
-	{META | 'B', backword}
-	,
-	{META | 'C', capword}
-	,
-	{META | 'D', delfword}
-	,
 #if	CRYPT
 	{META | 'E', set_encryption_key}
 	,
 #endif
-	{META | 'F', forwword}
-	,
 	{META | 'G', gotoline}
 	,
 #if	PKCODE
@@ -262,16 +224,12 @@ struct key_tab keytab[NBINDS] = {
 #endif
 	{META | 'K', bindtokey}
 	,
-	{META | 'L', lowerword}
-	,
 	{META | 'M', setgmode}
 	,
 #if	WORDPRO
 	{META | 'N', gotoeop}
 	,
 	{META | 'P', gotobop}
-	,
-	{META | 'Q', fillpara}
 	,
 #endif
 	{META | 'R', sreplace}
@@ -283,19 +241,12 @@ struct key_tab keytab[NBINDS] = {
 	,
 #endif
 #endif
-	{META | 'U', upperword}
-	,
 	{META | 'V', backpage}
 	,
 	{META | 'W', copyregion}
 	,
 	{META | 'X', namedcmd}
 	,
-	{META | 'Z', quickexit}
-	,
-	{META | 0x7F, delbword}
-	,
-
 #if	MSDOS
 	{SPEC | 71, gotobol}
 	,
@@ -402,7 +353,6 @@ struct key_tab keytab[NBINDS] = {
 	,
 
 	/* special internal bindings */
-	{ SPEC | META | 'W', wrapword },	/* called on word wrap */
 	{ SPEC | META | 'C', nullproc },	/*  every command input */
 	{ SPEC | META | 'R', nullproc },	/*  on file read */
 	{ SPEC | META | 'X', nullproc },	/*  on window change P.K. */

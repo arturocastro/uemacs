@@ -528,22 +528,6 @@ struct window *wpopup(void)
 	return wp;
 }
 
-int scrnextup(int f, int n)
-{				/* scroll the next window up (back) a page */
-	nextwind(FALSE, 1);
-	backpage(f, n);
-	prevwind(FALSE, 1);
-	return TRUE;
-}
-
-int scrnextdw(int f, int n)
-{				/* scroll the next window down (forward) a page */
-	nextwind(FALSE, 1);
-	forwpage(f, n);
-	prevwind(FALSE, 1);
-	return TRUE;
-}
-
 int savewnd(int f, int n)
 {				/* save ptr to current window */
 	swindow = curwp;
