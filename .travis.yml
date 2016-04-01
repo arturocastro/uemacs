@@ -1,2 +1,18 @@
 language: c
 script: make
+
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "Ooowd7ve/luU84tM0lMhcmE3kpVLaisx+Wmki89MpPy0q/Rs0XYBnR848m2knOxPrK/SEdVO+eEXcx6WCYTharzlhxqjbY4usqcJa0vMBc97P+svuWw6JWaPcUWbE/PWXhIeiMzdJ7wkYzw6M4pXCgcHSNSqUFslCU85c2TZpDkpTCvEm94rmlj+QWFfycqiP4s3E/4NWMPO9DBvEjB3tY7LnOGbrRSPjQjnHmTk6xjPbYepgl9oEBbfejDk6AbKJudzWvFyxKmUPb+oZ8oSzjlVH0t4iGj7nqM19sklkMP9zctAjl5XMkmS88gS6LLidqRLRnOJVH1njOznke8YCs0WEAnbfnkT+936xGlyZY2uOWCfMtCE0x9pfedsLNnvYk6H3SRUtrX8WEDsx6SDL2PstNa7C4KJaXKg4R+LNykf6t4JDlb3X+jp+NAlsR9LZOXVzkMbtnfj3Ea/A5R0I0WsV+DA7fJ+BodwqWDoXKn1xZkSk2iAbcPaK9ATk+vAvbmSSFHlTCye55vHyKd+vnwUzVRrmH05tEhcgKPytdb/wr0s/UAzZrKCTjkCyVd4bVDDvCQBMKlsfRBVdXb5arq7S40dH0h0hlPkzr4pBlzp5l/EMsXMWOb2F9jV+W9qvkW1HAqFu9c2sBp+2D3skKoX/PCxx+gslUuB3R0zAKU="
+
+addons:
+  coverity_scan:
+    project:
+      name: "arturocastro/uemacs"
+      description: "uEmacs/PK 4.0 fork"
+    notification_email: arturo.castrop@live.com
+    build_command_prepend: 
+    build_command: make
+    branch_pattern: coverity-scan
